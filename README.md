@@ -1,20 +1,21 @@
 # 🧠 Natural Language → SQL Generator & Database Console
 
-An interactive Streamlit application that converts natural language into SQL and provides a safe database console for managing SQLite databases.
+An interactive Streamlit application that converts natural language into SQL and provides a safe environment to manage SQLite databases.
 
 This project combines:
-- 🤖 LLM-powered SQL generation (T5)
-- 🛠 Database Console (safe operations)
-- 🔐 Admin Panel (destructive operations with login)
 
-Designed as a learning + development tool for querying and managing databases without writing raw SQL manually.
+- 🤖 LLM-powered SQL generation (T5)
+- 🛠 Database Console for safe table operations
+- 🔐 Admin Panel for controlled destructive actions
+
+Designed for learning, experimentation, and rapid database prototyping without manually writing SQL.
 
 ---
 
 ## ✨ Features
 
 ### 🔍 SQL Generator
-Convert plain English into SQL using a fine-tuned T5 model.
+Convert plain English into SQL queries using a fine-tuned T5 model.
 
 Examples:
 - "show all students older than 20"
@@ -24,12 +25,13 @@ Examples:
 ---
 
 ### 🛠 Database Console (Safe Zone)
-User-friendly table management without risk:
+
+User-friendly database management without risk:
 
 - View tables
 - Create tables dynamically
 - Insert rows
-- Run SELECT queries only
+- Execute SELECT-only queries
 - Auto-clearing forms
 - Success notifications
 
@@ -38,25 +40,23 @@ No destructive queries allowed here.
 ---
 
 ### 🔐 Admin Panel (Danger Zone)
-Protected operations:
+
+Protected administrative operations:
 
 - Admin login
-- Delete tables permanently
+- Permanent table deletion
 - Logout
 
-Separated intentionally to avoid accidental data loss.
+Separated intentionally to prevent accidental data loss.
 
 ---
 
 ## 🧱 System Design Principles
 
-This app follows professional architecture rules:
-
 - Database = single source of truth
 - UI driven by session_state
-- No blocking sleep() calls
-- No destructive actions in user console
-- State → rerun → render pattern
+- Destructive actions isolated in Admin Panel
+
 
 Benefits:
 - Stable UI
@@ -75,84 +75,72 @@ Benefits:
 - Pandas
 
 ---
-## 📂 Project Structure
-.
-├── fullsql.py # main Streamlit app
-├── user_db.sqlite # SQLite database file
-├── nl_to_sql_model/ # trained model folder
-├── nl_sql_merged_final6(1).csv- training SQL Query data
-└── README.md
 
+## 📂 Project Structure
+
+.
+├── fullsql.py                   # main Streamlit app
+├── user_db.sqlite               # SQLite database
+├── nl_to_sql_model/             # trained model
+├── nl_sql_merged_final6(1).csv  # training dataset
+└── README.md
 
 ---
 
 ## ⚙️ Installation
 
-### 1. Clone repository
-
+### Clone repository
 git clone <your-repo-url>
 cd <project-folder>
 
-### 2. Install dependencies
+### Install dependencies
 pip install streamlit torch transformers pandas
 
-### 3. Run the App
+### Run the app
 streamlit run fullsql.py
 
-- Open browser:
+Open browser:
 http://localhost:8501
+
+---
 
 ## 🚀 How to Use
 
-### 1. Generate SQL
+### Generate SQL
 - Open SQL Generator
 - Enter natural language query
 - Click Generate SQL
 
-### 2. Create Table
-
+### Create Table
 - Open Database Console
 - Enter table name
-- Add columns
+- Define columns
 - Click Create Table
-- Form resets automatically.
 
-### 3. Insert Row
-
+### Insert Row
 - Select table
 - Enter values
 - Click Insert
-- Row appears instantly.
 
-### 4. Execute Query
+### Execute Query
+Only SELECT queries allowed.
 
-- Enter generated SQL Query from Generator (eg:-SELECT * FROM students WHERE age> 18;)
-- Click on Run Query to see the results.
+### Delete Table (Admin Only)
 
-### 5. Delete Table (Admin Only)
-
-- Open Admin Panel
-- Login using the below credentials:
-  
-🔑 Admin Credentials (Default)
+Default credentials:
 username: admin
 password: admin123
 
-- Select table
-- Confirm deletion
+⚠️ Warning: Table deletion is permanent and cannot be undone.
 
-⚠️ Warning:
-This action permanently drops the selected table and all its data.
-Use only for removing test or unnecessary tables.
-Deletion cannot be undone.
+---
 
-## 🎯Purpose
+## 🎯 Purpose
 
 Built for:
-
 - Learning SQL
-- Experimenting with NL → SQL
-- Quick prototyping
+- NL → SQL experimentation
+- Rapid prototyping
 - Educational demos
 
-Note: Not intended as production DB admin tool without security hardening.
+Not intended for production use without additional security hardening.
