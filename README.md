@@ -90,8 +90,10 @@ Benefits:
 ## ⚙️ Installation
 
 ### Clone repository
+```
 git clone <your-repo-url>
 cd <project-folder>
+```
 
 ### Install dependencies
 pip install streamlit torch transformers pandas
