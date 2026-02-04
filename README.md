@@ -55,9 +55,8 @@ Separated intentionally to prevent accidental data loss.
 
 - Database = single source of truth
 - UI driven by session_state
-- No blocking sleep() calls
 - Destructive actions isolated in Admin Panel
-- State → rerun → render pattern
+
 
 Benefits:
 - Stable UI
@@ -78,14 +77,14 @@ Benefits:
 ---
 
 ## 📂 Project Structure
-
+```
 .
 ├── fullsql.py                   # main Streamlit app
 ├── user_db.sqlite               # SQLite database
 ├── nl_to_sql_model/             # trained model
 ├── nl_sql_merged_final6(1).csv  # training dataset
 └── README.md
-
+```
 ---
 
 ## ⚙️ Installation
