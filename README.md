@@ -96,14 +96,17 @@ cd <project-folder>
 ```
 
 ### Install dependencies
+```
 pip install streamlit torch transformers pandas
+```
 
 ### Run the app
+```
 streamlit run fullsql.py
 
 Open browser:
 http://localhost:8501
-
+```
 ---
 
 ## 🚀 How to Use
@@ -130,8 +133,10 @@ Only SELECT queries allowed.
 ### Delete Table (Admin Only)
 
 Default credentials:
-username: admin
+```
+Username: admin
 password: admin123
+```
 
 ⚠️ Warning: Table deletion is permanent and cannot be undone.
 
